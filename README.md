@@ -1,16 +1,16 @@
 
 
-# DayZ LootEdit
+# DayZ LootEditor
 
 
-An editor to comfortably modify the loot table of the game "DayZ (Standalone)". It features the ability to increase/decrease the number of spawns of several objects via a percentage value.
+An editor to comfortably modify the loot table of the game "DayZ (Standalone)".
 
 
 ---
 
 
-**Version 0.1.0 Alpha**
-#### **[DOWNLOAD](https://github.com/MrX13415/DayZLootEdit/releases)**
+**Version 0.2.1 Alpha**
+#### **[DOWNLOAD](https://github.com/ojemineh/DayZLootEdit/releases)**
 
 This tool requires at least **Windows 7** with **ServicePack 1**.
 
@@ -21,19 +21,15 @@ This tool requires at least **Windows 7** with **ServicePack 1**.
 
 The loot table of DayZ (Standalone) is stored in a XML file inside the current mission.
 The file is called `types.xml` and can be found in the `mpmissions` folder in the server files or the game files. For the current version of the game it's stored in the following location: 
-`DayZ Server\mpmissions\dayzOffline.chernarusplus\db\types.xml`
+`\mpmissions\dayzOffline.chernarusplus\db\types.xml`
 
 Usually the file from the dedicated server has to be changed.
 Changing the file in your local game folder will only affect yourself while playing in offline mode.
 
 To start, open the file `types.xml`. 
-If you want to increase the general amount of "loot", select all or a selection of entries.
-Now use the slider/text box reading **Nominal Percentage** at the top of the window to change the **Nominal** value on a percentage basis.
-Don't forget to click on the **Set** button to confirm your changes. Save the file if you are done.
-
-On the first time the file gets saved, a backup file containing the original content with the name `types.xml.original.xml` will be created.
 
 Note: Alle values can be changed, even though you shouldn't do so. For example, don't change the name of any object, it will break the game.
+
 
 ![DayZ LootEdit](dayzlootedit.png)
 
@@ -44,7 +40,7 @@ Note: Alle values can be changed, even though you shouldn't do so. For example, 
 
 MIT License
 
-Copyright (c) 2018 MrX13415
+Copyright (c) 2021 by O. Jemineh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
