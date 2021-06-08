@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows;
@@ -38,8 +39,9 @@ namespace DayZLootEdit
                 lblCopyright.Content = copyright.ToString();
             }
 
-            string credits = "This application is a further development\nof 'DayZ LootEdit' by MrX13415.\n\nIf you have any suggestions for\nimprovement, please contact me\non GitHub.";
-            rtbCredits.AppendText(credits);
+            MemoryStream memStream = new MemoryStream(ASCIIEncoding.Default.GetBytes(Properties.Resources.info));
+            rtbCredits.SelectAll();
+            rtbCredits.Selection.Load(memStream, DataFormats.Rtf);
 
         }
 

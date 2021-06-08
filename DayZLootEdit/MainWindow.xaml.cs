@@ -297,14 +297,6 @@ namespace DayZLootEdit
 
         }
 
-        private void MnuHelpInfo_Click(object sender, RoutedEventArgs e)
-        {
-
-            InfoWindow iw = new InfoWindow();
-            iw.ShowDialog();
-
-        }
-
         private void MnuEditSelectAll_Click(object sender, RoutedEventArgs e)
         {
             LootList.SelectAll();
@@ -604,6 +596,20 @@ namespace DayZLootEdit
             }
             LootList.Items.Refresh();
             LootList.Focus();
+        }
+
+        private void MnuHelpGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            string uriQuery = "https://github.com/ojemineh/DayZLootEdit";
+            Process.Start(uriQuery);
+        }
+
+        private void MnuHelpInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+            InfoWindow iw = new InfoWindow();
+            iw.ShowDialog();
+
         }
 
         // PERCENT

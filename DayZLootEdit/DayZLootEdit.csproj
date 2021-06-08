@@ -134,6 +134,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\info.rtf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

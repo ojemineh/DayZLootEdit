@@ -59,5 +59,26 @@ namespace DayZLootEdit.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die {\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Courier New;}}
+        ///{\colortbl ;\red0\green0\blue0;}
+        ///{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+        ///\pard\cf1\f0\fs18\lang1031 This application is a further development of &apos;DayZLootEdit&apos; by MrX13415.\par
+        ///\par
+        ///If you have any suggestions for improvement, please contact me on GitHub.\par
+        ///\par
+        ///\par
+        ///MIT License\par
+        ///\par
+        ///Copyright (c) 2021 \par
+        ///\par
+        ///Permission is hereby granted, free of charge, to any person obtaining a copy of this s [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        /// </summary>
+        internal static string info {
+            get {
+                return ResourceManager.GetString("info", resourceCulture);
+            }
+        }
     }
 }
