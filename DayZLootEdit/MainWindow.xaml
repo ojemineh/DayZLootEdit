@@ -1,0 +1,597 @@
+﻿<Window x:Class="DayZLootEdit.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DayZLootEdit"
+        mc:Ignorable="d"
+        Title="DayZ Loot Editor" Height="800" Width="1368" Icon="dayz_types.ico">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        
+        <Menu x:Name="MnuMain" Margin="10,0" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <MenuItem x:Name="MnuFile" Header="_File" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+                <MenuItem x:Name="MnuFileOpen" Header="_Open" Click="MnuFileOpen_Click"/>
+                <MenuItem x:Name="MnuFileReload" Header="_Reload" Click="MnuFileReload_Click"/>
+                <Separator/>
+                <MenuItem x:Name="MnuFileSave" Header="_Save" Click="MnuFileSave_Click"/>
+                <MenuItem x:Name="MnuFileSaveAs" Header="Save _As" Click="MnuFileSaveAs_Click"/>
+                <Separator/>
+                <MenuItem x:Name="MnuFileClose" Header="_Close" Click="MnuFileClose_Click"/>
+                <Separator/>
+                <MenuItem x:Name="MnuFileExit" Header="E_xit" Click="MnuFileExit_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="MnuEdit" Header="_Edit" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <MenuItem x:Name="MnuEditSelectAll" Header="Select _All" Click="MnuEditSelectAll_Click"/>
+                <MenuItem x:Name="MnuEditSelectNone" Header="Select _None" Click="MnuEditSelectNone_Click"/>
+                <Separator/>
+                <MenuItem x:Name="MnuEditName" Header="_Classname">
+                    <MenuItem x:Name="MnuEditNameSearchDuckDuck" Header="Search _DuckDuckGo" Click="MnuEditNameSearchDuckDuck_Click"/>
+                    <MenuItem x:Name="MnuEditNameSearchGoogle" Header="Search _Google" Click="MnuEditNameSearchGoogle_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditAmount" Header="_Spawn">
+                    <MenuItem x:Name="MnuEditAmountNominalToMin" Header="_Nominal -&gt; Min" Click="MnuEditAmountNominalToMin_Click"/>
+                    <MenuItem x:Name="MnuEditAmountMinToNominal" Header="_Min -&gt; Nominal" Click="MnuEditAmountMinToNominal_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="MnuEditAmountZero" Header="_Zero" Click="MnuEditAmountZero_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditLifetime" Header="_Lifetime">
+                    <MenuItem x:Name="MnuEditLifetime3888000"   Header="3888000s [45d]"     Click="MnuEditLifetimeValue_Click" Tag="3888000"/>
+                    <MenuItem x:Name="MnuEditLifetime604800"    Header="604800s [7d]"       Click="MnuEditLifetimeValue_Click" Tag="604800"/>
+                    <MenuItem x:Name="MnuEditLifetime172800"    Header="172800s [48h]"      Click="MnuEditLifetimeValue_Click" Tag="172800"/>
+                    <MenuItem x:Name="MnuEditLifetime86400"     Header="86400s [24h]"       Click="MnuEditLifetimeValue_Click" Tag="86400"/>
+                    <MenuItem x:Name="MnuEditLifetime43200"     Header="43200s [12h]"       Click="MnuEditLifetimeValue_Click" Tag="43200"/>
+                    <MenuItem x:Name="MnuEditLifetime28800"     Header="28800s [8.0h]"      Click="MnuEditLifetimeValue_Click" Tag="28800"/>
+                    <MenuItem x:Name="MnuEditLifetime21600"     Header="21600s [6.0h]"      Click="MnuEditLifetimeValue_Click" Tag="21600"/>
+                    <MenuItem x:Name="MnuEditLifetime14400"     Header="14400s [4.0h]"      Click="MnuEditLifetimeValue_Click" Tag="14400"/>
+                    <MenuItem x:Name="MnuEditLifetime10800"     Header="10800s [3.0h]"      Click="MnuEditLifetimeValue_Click" Tag="10800"/>
+                    <MenuItem x:Name="MnuEditLifetime9000"      Header="9000s [2.5h]"       Click="MnuEditLifetimeValue_Click" Tag="9000"/>
+                    <MenuItem x:Name="MnuEditLifetime7200"      Header="7200s [2.0h]"       Click="MnuEditLifetimeValue_Click" Tag="7200"/>
+                    <MenuItem x:Name="MnuEditLifetime5400"      Header="5400s [1.5h]"       Click="MnuEditLifetimeValue_Click" Tag="5400"/>
+                    <MenuItem x:Name="MnuEditLifetime3600"      Header="3600s [1.0h]"       Click="MnuEditLifetimeValue_Click" Tag="3600"/>
+                    <MenuItem x:Name="MnuEditLifetime2700"      Header="2700s [45m]"        Click="MnuEditLifetimeValue_Click" Tag="2700"/>
+                    <MenuItem x:Name="MnuEditLifetime1800"      Header="1800s [30m]"        Click="MnuEditLifetimeValue_Click" Tag="1800"/>
+                    <MenuItem x:Name="MnuEditLifetime1200"      Header="1200s [20m]"        Click="MnuEditLifetimeValue_Click" Tag="1200"/>
+                    <MenuItem x:Name="MnuEditLifetime900"       Header="900s [15m]"         Click="MnuEditLifetimeValue_Click" Tag="900"/>
+                    <MenuItem x:Name="MnuEditLifetime600"       Header="600s [10m]"         Click="MnuEditLifetimeValue_Click" Tag="600"/>
+                    <MenuItem x:Name="MnuEditLifetime300"       Header="300s [5m]"          Click="MnuEditLifetimeValue_Click" Tag="300"/>
+                    <MenuItem x:Name="MnuEditLifetime240"       Header="240s [4m]"          Click="MnuEditLifetimeValue_Click" Tag="240"/>
+                    <MenuItem x:Name="MnuEditLifetime180"       Header="180s [3m]"          Click="MnuEditLifetimeValue_Click" Tag="180"/>
+                    <MenuItem x:Name="MnuEditLifetime120"       Header="120s [2m]"          Click="MnuEditLifetimeValue_Click" Tag="120"/>
+                    <MenuItem x:Name="MnuEditLifetime60"        Header="60s [1m]"           Click="MnuEditLifetimeValue_Click" Tag="60"/>
+                    <MenuItem x:Name="MnuEditLifetime3"         Header="3s"                 Click="MnuEditLifetimeValue_Click" Tag="3"/>
+                    <MenuItem x:Name="MnuEditLifetime0"         Header="0s"                 Click="MnuEditLifetimeValue_Click" Tag="0"/>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditRestock" Header="_Restock">
+                    <MenuItem x:Name="MnuEditRestock3888000"    Header="3888000s [45d]"     Click="MnuEditRestockValue_Click" Tag="3888000"/>
+                    <MenuItem x:Name="MnuEditRestock604800"     Header="604800s [7d]"       Click="MnuEditRestockValue_Click" Tag="604800"/>
+                    <MenuItem x:Name="MnuEditRestock172800"     Header="172800s [48h]"      Click="MnuEditRestockValue_Click" Tag="172800"/>
+                    <MenuItem x:Name="MnuEditRestock86400"      Header="86400s [24h]"       Click="MnuEditRestockValue_Click" Tag="86400"/>
+                    <MenuItem x:Name="MnuEditRestock43200"      Header="43200s [12h]"       Click="MnuEditRestockValue_Click" Tag="43200"/>
+                    <MenuItem x:Name="MnuEditRestock28800"      Header="28800s [8.0h]"      Click="MnuEditRestockValue_Click" Tag="28800"/>
+                    <MenuItem x:Name="MnuEditRestock21600"      Header="21600s [6.0h]"      Click="MnuEditRestockValue_Click" Tag="21600"/>
+                    <MenuItem x:Name="MnuEditRestock14400"      Header="14400s [4.0h]"      Click="MnuEditRestockValue_Click" Tag="14400"/>
+                    <MenuItem x:Name="MnuEditRestock10800"      Header="10800s [3.0h]"      Click="MnuEditRestockValue_Click" Tag="10800"/>
+                    <MenuItem x:Name="MnuEditRestock9000"       Header="9000s [2.5h]"       Click="MnuEditRestockValue_Click" Tag="9000"/>
+                    <MenuItem x:Name="MnuEditRestock7200"       Header="7200s [2.0h]"       Click="MnuEditRestockValue_Click" Tag="7200"/>
+                    <MenuItem x:Name="MnuEditRestock5400"       Header="5400s [1.5h]"       Click="MnuEditRestockValue_Click" Tag="5400"/>
+                    <MenuItem x:Name="MnuEditRestock3600"       Header="3600s [1.0h]"       Click="MnuEditRestockValue_Click" Tag="3600"/>
+                    <MenuItem x:Name="MnuEditRestock2700"       Header="2700s [45m]"        Click="MnuEditRestockValue_Click" Tag="2700"/>
+                    <MenuItem x:Name="MnuEditRestock1800"       Header="1800s [30m]"        Click="MnuEditRestockValue_Click" Tag="1800"/>
+                    <MenuItem x:Name="MnuEditRestock1200"       Header="1200s [20m]"        Click="MnuEditRestockValue_Click" Tag="1200"/>
+                    <MenuItem x:Name="MnuEditRestock900"        Header="900s [15m]"         Click="MnuEditRestockValue_Click" Tag="900"/>
+                    <MenuItem x:Name="MnuEditRestock600"        Header="600s [10m]"         Click="MnuEditRestockValue_Click" Tag="600"/>
+                    <MenuItem x:Name="MnuEditRestock300"        Header="300s [5m]"          Click="MnuEditRestockValue_Click" Tag="300"/>
+                    <MenuItem x:Name="MnuEditRestock240"        Header="240s [4m]"          Click="MnuEditRestockValue_Click" Tag="240"/>
+                    <MenuItem x:Name="MnuEditRestock180"        Header="180s [3m]"          Click="MnuEditRestockValue_Click" Tag="180"/>
+                    <MenuItem x:Name="MnuEditRestock120"        Header="120s [2m]"          Click="MnuEditRestockValue_Click" Tag="120"/>
+                    <MenuItem x:Name="MnuEditRestock60"         Header="60s [1m]"           Click="MnuEditRestockValue_Click" Tag="60"/>
+                    <MenuItem x:Name="MnuEditRestock3"          Header="3s"                 Click="MnuEditRestockValue_Click" Tag="3"/>
+                    <MenuItem x:Name="MnuEditRestock0"          Header="0s"                 Click="MnuEditRestockValue_Click" Tag="0"/>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditQuantity" Header="_Quantity">
+                    <MenuItem x:Name="MnuEditQuantityNormal" Header="Default -1" Click="MnuEditQuantityNormal_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="MnuEditQuantityQMax" Header="QM_ax">
+                        <MenuItem x:Name="MnuEditQuantityQMax100" Header="100" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax90" Header="90" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax80" Header="80" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax70" Header="70" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax60" Header="60" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax50" Header="50" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax40" Header="40" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax30" Header="30" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax20" Header="20" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax10" Header="10" Click="MnuEditQuantityQMaxValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMax0" Header="0" Click="MnuEditQuantityQMaxValue_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuEditQuantityQMin" Header="QM_in">
+                        <MenuItem x:Name="MnuEditQuantityQMin100" Header="100" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin90" Header="90" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin80" Header="80" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin70" Header="70" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin60" Header="60" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin50" Header="50" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin40" Header="40" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin30" Header="30" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin20" Header="20" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin10" Header="10" Click="MnuEditQuantityQMinValue_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityQMin0" Header="0" Click="MnuEditQuantityQMinValue_Click"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="MnuEditQuantityPresets" Header="_Presets">
+                        <MenuItem x:Name="MnuEditQuantityPresets_100_30" Header="100 - 30" Click="MnuEditQuantityPresets_100_30_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_100_20" Header="100 - 20" Click="MnuEditQuantityPresets_100_20_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_100_10" Header="100 - 10" Click="MnuEditQuantityPresets_100_10_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_100_1" Header="100 - 1" Click="MnuEditQuantityPresets_100_1_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_90_10" Header="90 - 10" Click="MnuEditQuantityPresets_90_10_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_80_20" Header="80 - 20" Click="MnuEditQuantityPresets_80_20_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_70_30" Header="70 - 30" Click="MnuEditQuantityPresets_70_30_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_60_10" Header="60 - 10" Click="MnuEditQuantityPresets_60_10_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_50_10" Header="50 - 10" Click="MnuEditQuantityPresets_50_10_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_40_10" Header="40 - 10" Click="MnuEditQuantityPresets_40_10_Click"/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_30_10" Header="30 - 10" Click="MnuEditQuantityPresets_30_10_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuEditQuantityPresets_0_0" Header="0 - 0" Click="MnuEditQuantityPresets_0_0_Click"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditCost" Header="C_ost">
+                    <MenuItem x:Name="MnuEditCost100" Header="100" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost90" Header="90" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost80" Header="80" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost70" Header="70" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost60" Header="60" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost50" Header="50" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost40" Header="40" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost30" Header="30" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost20" Header="20" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost10" Header="10" Click="MnuEditCostValue_Click"/>
+                    <MenuItem x:Name="MnuEditCost0" Header="0" Click="MnuEditCostValue_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MnuEditClear" Header="C_lear">
+                    <MenuItem x:Name="MnuEditClearTag" Header="Tag" Click="MnuEditClearTag_Click"/>
+                    <MenuItem x:Name="MnuEditClearUsage" Header="Usage" Click="MnuEditClearUsage_Click"/>
+                    <MenuItem x:Name="MnuEditClearValue" Header="Value" Click="MnuEditClearValue_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="MnuHelp" Header="_?" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <MenuItem x:Name="MnuHelpInfo" Header="_Info" HorizontalAlignment="Left" Width="140" Click="MnuHelpInfo_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <Separator Margin="0,20,0,0" VerticalAlignment="Top" Height="1"/>
+        
+        <GroupBox x:Name="grpPercent" Header="Percent" HorizontalAlignment="Left" Height="64" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="310">
+            <DockPanel LastChildFill="False" Margin="0">
+                <DockPanel LastChildFill="False" Width="258" HorizontalAlignment="Left">
+                    <TextBox x:Name="txtPercent" HorizontalAlignment="Left" Height="21" Margin="5,10,0,0" Grid.Row="1" Text="100%" VerticalAlignment="Top" Width="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" KeyUp="txtPercent_KeyUp" LostFocus="txtPercent_LostFocus" GotFocus="txtPercent_GotFocus"/>
+                    <Slider x:Name="sldPercent" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,0,0" Width="200" LargeChange="10" Maximum="200" SmallChange="1" Value="100" TickFrequency="50" TickPlacement="Both" ValueChanged="sldPercent_ValueChanged"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="40" HorizontalAlignment="Left">
+                    <Button x:Name="btnPercent" Content="SET" HorizontalAlignment="Left" Margin="0" Grid.Row="1" VerticalAlignment="Top" Width="40" Height="41" Click="btnPercent_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="ToolTipService.ToolTip" Value="Changes the Nominal/Min value to the corresponding percentage values."/>
+                                <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
+        
+        <GroupBox x:Name="grpFilter" Header="Filter" HorizontalAlignment="Left" Height="64" Margin="325,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="1018">
+            <DockPanel LastChildFill="False" Margin="0">
+                <DockPanel LastChildFill="False" Width="85" HorizontalAlignment="Left">
+                    <Button x:Name="btnFilterReset" Content="Reset" Width="40" HorizontalAlignment="Left" Click="btnFilterReset_Click" Margin="0">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="ToolTipService.ToolTip" Value="Click to reset/disable filter. Ctrl+Click deletes all filter entries."/>
+                                <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button x:Name="btnFilterExec" Content="Filter" Width="40" Margin="5,0,0,0" Click="btnFilterExec_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="ToolTipService.ToolTip" Value="Filter loot items according to the selected filter options."/>
+                                <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="180" Margin="10,0,0,0" HorizontalAlignment="Left">
+                    <CheckBox x:Name="chkFilterName" Content="Classname" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterName_Click"/>
+                    <TextBox x:Name="txtFilterName" Height="22" VerticalAlignment="Top" Margin="0,3,0,0" DockPanel.Dock="Top" VerticalContentAlignment="Center" GotFocus="txtFilterName_GotFocus"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="80" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <CheckBox x:Name="chkFilterInCargo" Content="InCargo" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterInCargo_Click"/>
+                    <CheckBox x:Name="chkFilterInHoarder" Content="InHoarder" Height="16" VerticalAlignment="Top" Margin="0,3,0,0" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterInHoarder_Click"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="80" Margin="10,0,0,0" HorizontalAlignment="Left">
+                    <CheckBox x:Name="chkFilterInMap" Content="InMap" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterInMap_Click"/>
+                    <CheckBox x:Name="chkFilterInPlayer" Content="InPlayer" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,3,0,0" HorizontalAlignment="Left" Click="chkFilterInPlayer_Click"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="80" Margin="10,0,0,0" HorizontalAlignment="Left">
+                    <CheckBox x:Name="chkFilterCrafted" Content="Crafted" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterCrafted_Click"/>
+                    <CheckBox x:Name="chkFilterDeloot" Content="Deloot" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,3,0,0" HorizontalAlignment="Left" Click="chkFilterDeloot_Click"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="120" Margin="10,0,0,0" HorizontalAlignment="Left">
+                    <CheckBox x:Name="chkFilterCategory" Content="Category" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterCategory_Click"/>
+                    <ComboBox x:Name="cmbFilterCategory" Height="22" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,3,0,0"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <CheckBox x:Name="chkFilterTag" Content="Tag" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterTag_Click"/>
+                    <ComboBox x:Name="cmbFilterTag" Height="22" VerticalAlignment="Top" Margin="0,3,0,0" DockPanel.Dock="Top"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <CheckBox x:Name="chkFilterUsage" Content="Usage" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterUsage_Click"/>
+                    <TextBox x:Name="txtFilterUsage" Height="22" VerticalAlignment="Top" Margin="0,3,0,0" DockPanel.Dock="Top" VerticalContentAlignment="Center" GotFocus="txtFilterUsage_GotFocus"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False" Width="100" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <CheckBox x:Name="chkFilterValue" Content="Value" Height="16" VerticalAlignment="Top" DockPanel.Dock="Top" HorizontalAlignment="Left" Click="chkFilterValue_Click"/>
+                    <TextBox x:Name="txtFilterValue" Height="22" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,3,0,0" VerticalContentAlignment="Center" GotFocus="txtFilterValue_GotFocus"/>
+                </DockPanel>
+            </DockPanel>
+        </GroupBox>
+        
+        <DataGrid x:Name="LootList" Margin="1,0,1,1" ItemsSource="{Binding LootTable.Loot}" IsEnabled="False" SelectionChanged="LootList_SelectionChanged" Grid.Row="2" HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" MaxColumnWidth="Infinity" MinColumnWidth="20" AutoGenerateColumns="False">
+            <DataGrid.Resources>
+                <ContextMenu x:Key="MnuGrid" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <MenuItem x:Name="MnuGridName" Header="_Classname">
+                        <MenuItem x:Name="MnuGridNameSearchDuckDuck" Header="Search _DuckDuckGo" Click="MnuEditNameSearchDuckDuck_Click"/>
+                        <MenuItem x:Name="MnuGridNameSearchGoogle" Header="Search _Google" Click="MnuEditNameSearchGoogle_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuGridAmount" Header="_Spawn">
+                        <MenuItem x:Name="MnuGridAmountNominalToMin" Header="_Nominal -&gt; Min" Click="MnuEditAmountNominalToMin_Click"/>
+                        <MenuItem x:Name="MnuGridAmountMinToNominal" Header="_Min -&gt; Nominal" Click="MnuEditAmountMinToNominal_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuGridAmountZero" Header="_Zero" Click="MnuEditAmountZero_Click"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuGridLifetime" Header="_Lifetime">
+                        <MenuItem x:Name="MnuGridLifetime3888000"   Header="3888000s [45d]"     Click="MnuEditLifetimeValue_Click" Tag="3888000"/>
+                        <MenuItem x:Name="MnuGridLifetime604800"    Header="604800s [7d]"       Click="MnuEditLifetimeValue_Click" Tag="604800"/>
+                        <MenuItem x:Name="MnuGridLifetime172800"    Header="172800s [48h]"      Click="MnuEditLifetimeValue_Click" Tag="172800"/>
+                        <MenuItem x:Name="MnuGridLifetime86400"     Header="86400s [24h]"       Click="MnuEditLifetimeValue_Click" Tag="86400"/>
+                        <MenuItem x:Name="MnuGridLifetime43200"     Header="43200s [12h]"       Click="MnuEditLifetimeValue_Click" Tag="43200"/>
+                        <MenuItem x:Name="MnuGridLifetime28800"     Header="28800s [8.0h]"      Click="MnuEditLifetimeValue_Click" Tag="28800"/>
+                        <MenuItem x:Name="MnuGridLifetime21600"     Header="21600s [6.0h]"      Click="MnuEditLifetimeValue_Click" Tag="21600"/>
+                        <MenuItem x:Name="MnuGridLifetime14400"     Header="14400s [4.0h]"      Click="MnuEditLifetimeValue_Click" Tag="14400"/>
+                        <MenuItem x:Name="MnuGridLifetime10800"     Header="10800s [3.0h]"      Click="MnuEditLifetimeValue_Click" Tag="10800"/>
+                        <MenuItem x:Name="MnuGridLifetime9000"      Header="9000s [2.5h]"       Click="MnuEditLifetimeValue_Click" Tag="9000"/>
+                        <MenuItem x:Name="MnuGridLifetime7200"      Header="7200s [2.0h]"       Click="MnuEditLifetimeValue_Click" Tag="7200"/>
+                        <MenuItem x:Name="MnuGridLifetime5400"      Header="5400s [1.5h]"       Click="MnuEditLifetimeValue_Click" Tag="5400"/>
+                        <MenuItem x:Name="MnuGridLifetime3600"      Header="3600s [1.0h]"       Click="MnuEditLifetimeValue_Click" Tag="3600"/>
+                        <MenuItem x:Name="MnuGridLifetime2700"      Header="2700s [45m]"        Click="MnuEditLifetimeValue_Click" Tag="2700"/>
+                        <MenuItem x:Name="MnuGridLifetime1800"      Header="1800s [30m]"        Click="MnuEditLifetimeValue_Click" Tag="1800"/>
+                        <MenuItem x:Name="MnuGridLifetime1200"      Header="1200s [20m]"        Click="MnuEditLifetimeValue_Click" Tag="1200"/>
+                        <MenuItem x:Name="MnuGridLifetime900"       Header="900s [15m]"         Click="MnuEditLifetimeValue_Click" Tag="900"/>
+                        <MenuItem x:Name="MnuGridLifetime600"       Header="600s [10m]"         Click="MnuEditLifetimeValue_Click" Tag="600"/>
+                        <MenuItem x:Name="MnuGridLifetime300"       Header="300s [5m]"          Click="MnuEditLifetimeValue_Click" Tag="300"/>
+                        <MenuItem x:Name="MnuGridLifetime240"       Header="240s [4m]"          Click="MnuEditLifetimeValue_Click" Tag="240"/>
+                        <MenuItem x:Name="MnuGridLifetime180"       Header="180s [3m]"          Click="MnuEditLifetimeValue_Click" Tag="180"/>
+                        <MenuItem x:Name="MnuGridLifetime120"       Header="120s [2m]"          Click="MnuEditLifetimeValue_Click" Tag="120"/>
+                        <MenuItem x:Name="MnuGridLifetime60"        Header="60s [1m]"           Click="MnuEditLifetimeValue_Click" Tag="60"/>
+                        <MenuItem x:Name="MnuGridLifetime3"         Header="3s"                 Click="MnuEditLifetimeValue_Click" Tag="3"/>
+                        <MenuItem x:Name="MnuGridLifetime0"         Header="0s"                 Click="MnuEditLifetimeValue_Click" Tag="0"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuGridRestock" Header="_Restock">
+                        <MenuItem x:Name="MnuGridRestock3888000"    Header="3888000s [45d]"     Click="MnuEditRestockValue_Click" Tag="3888000"/>
+                        <MenuItem x:Name="MnuGridRestock604800"     Header="604800s [7d]"       Click="MnuEditRestockValue_Click" Tag="604800"/>
+                        <MenuItem x:Name="MnuGridRestock172800"     Header="172800s [48h]"      Click="MnuEditRestockValue_Click" Tag="172800"/>
+                        <MenuItem x:Name="MnuGridRestock86400"      Header="86400s [24h]"       Click="MnuEditRestockValue_Click" Tag="86400"/>
+                        <MenuItem x:Name="MnuGridRestock43200"      Header="43200s [12h]"       Click="MnuEditRestockValue_Click" Tag="43200"/>
+                        <MenuItem x:Name="MnuGridRestock28800"      Header="28800s [8.0h]"      Click="MnuEditRestockValue_Click" Tag="28800"/>
+                        <MenuItem x:Name="MnuGridRestock21600"      Header="21600s [6.0h]"      Click="MnuEditRestockValue_Click" Tag="21600"/>
+                        <MenuItem x:Name="MnuGridRestock14400"      Header="14400s [4.0h]"      Click="MnuEditRestockValue_Click" Tag="14400"/>
+                        <MenuItem x:Name="MnuGridRestock10800"      Header="10800s [3.0h]"      Click="MnuEditRestockValue_Click" Tag="10800"/>
+                        <MenuItem x:Name="MnuGridRestock9000"      Header="9000s [2.5h]"       Click="MnuEditRestockValue_Click" Tag="9000"/>
+                        <MenuItem x:Name="MnuGridRestock7200"       Header="7200s [2.0h]"       Click="MnuEditRestockValue_Click" Tag="7200"/>
+                        <MenuItem x:Name="MnuGridRestock5400"       Header="5400s [1.5h]"       Click="MnuEditRestockValue_Click" Tag="5400"/>
+                        <MenuItem x:Name="MnuGridRestock3600"       Header="3600s [1.0h]"       Click="MnuEditRestockValue_Click" Tag="3600"/>
+                        <MenuItem x:Name="MnuGridRestock2700"       Header="2700s [45m]"        Click="MnuEditRestockValue_Click" Tag="2700"/>
+                        <MenuItem x:Name="MnuGridRestock1800"       Header="1800s [30m]"        Click="MnuEditRestockValue_Click" Tag="1800"/>
+                        <MenuItem x:Name="MnuGridRestock1200"       Header="1200s [20m]"        Click="MnuEditRestockValue_Click" Tag="1200"/>
+                        <MenuItem x:Name="MnuGridRestock900"        Header="900s [15m]"         Click="MnuEditRestockValue_Click" Tag="900"/>
+                        <MenuItem x:Name="MnuGridRestock600"        Header="600s [10m]"         Click="MnuEditRestockValue_Click" Tag="600"/>
+                        <MenuItem x:Name="MnuGridRestock300"        Header="300s [5m]"          Click="MnuEditRestockValue_Click" Tag="300"/>
+                        <MenuItem x:Name="MnuGridRestock240"        Header="240s [4m]"          Click="MnuEditRestockValue_Click" Tag="240"/>
+                        <MenuItem x:Name="MnuGridRestock180"        Header="180s [3m]"          Click="MnuEditRestockValue_Click" Tag="180"/>
+                        <MenuItem x:Name="MnuGridRestock120"        Header="120s [2m]"          Click="MnuEditRestockValue_Click" Tag="120"/>
+                        <MenuItem x:Name="MnuGridRestock60"         Header="60s [1m]"           Click="MnuEditRestockValue_Click" Tag="60"/>
+                        <MenuItem x:Name="MnuGridRestock3"          Header="3s"                 Click="MnuEditRestockValue_Click" Tag="3"/>
+                        <MenuItem x:Name="MnuGridRestock0"          Header="0s"                 Click="MnuEditRestockValue_Click" Tag="0"/>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuGridQuantity" Header="_Quantity">
+                        <MenuItem x:Name="MnuGridQuantityNormal" Header="Default -1" Click="MnuEditQuantityNormal_Click"/>
+                        <Separator/>
+                        <MenuItem x:Name="MnuGridQuantityQMax" Header="QM_ax">
+                            <MenuItem x:Name="MnuGridQuantityQMax100" Header="100" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax90" Header="90" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax80" Header="80" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax70" Header="70" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax60" Header="60" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax50" Header="50" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax40" Header="40" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax30" Header="30" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax20" Header="20" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax10" Header="10" Click="MnuEditQuantityQMaxValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMax0" Header="0" Click="MnuEditQuantityQMaxValue_Click"/>
+                        </MenuItem>
+                        <MenuItem x:Name="MnuGridQuantityQMin" Header="QM_in">
+                            <MenuItem x:Name="MnuGridQuantityQMin100" Header="100" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin90" Header="90" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin80" Header="80" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin70" Header="70" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin60" Header="60" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin50" Header="50" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin40" Header="40" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin30" Header="30" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin20" Header="20" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin10" Header="10" Click="MnuEditQuantityQMinValue_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityQMin0" Header="0" Click="MnuEditQuantityQMinValue_Click"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem x:Name="MnuGridQuantityPresets" Header="_Presets">
+                            <MenuItem x:Name="MnuGridQuantityPresets_100_30" Header="100 - 30" Click="MnuEditQuantityPresets_100_30_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_100_20" Header="100 - 20" Click="MnuEditQuantityPresets_100_20_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_100_10" Header="100 - 10" Click="MnuEditQuantityPresets_100_10_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_100_1" Header="100 - 1" Click="MnuEditQuantityPresets_100_1_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_90_10" Header="90 - 10" Click="MnuEditQuantityPresets_90_10_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_80_20" Header="80 - 20" Click="MnuEditQuantityPresets_80_20_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_70_30" Header="70 - 30" Click="MnuEditQuantityPresets_70_30_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_60_10" Header="60 - 10" Click="MnuEditQuantityPresets_60_10_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_50_10" Header="50 - 10" Click="MnuEditQuantityPresets_50_10_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_40_10" Header="40 - 10" Click="MnuEditQuantityPresets_40_10_Click"/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_30_10" Header="30 - 10" Click="MnuEditQuantityPresets_30_10_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="MnuGridQuantityPresets_0_0" Header="0 - 0" Click="MnuEditQuantityPresets_0_0_Click"/>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem x:Name="MnuGridCost" Header="C_ost">
+                        <MenuItem x:Name="MnuGridCost100" Header="100" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost90" Header="90" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost80" Header="80" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost70" Header="70" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost60" Header="60" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost50" Header="50" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost40" Header="40" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost30" Header="30" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost20" Header="20" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost10" Header="10" Click="MnuEditCostValue_Click"/>
+                        <MenuItem x:Name="MnuGridCost0" Header="0" Click="MnuEditCostValue_Click"/>
+                    </MenuItem>
+                    <Separator/>
+                    <MenuItem x:Name="MnuGridClear" Header="C_lear">
+                        <MenuItem x:Name="MnuGridClearTag" Header="Tag" Click="MnuEditClearTag_Click"/>
+                        <MenuItem x:Name="MnuGridClearUsage" Header="Usage" Click="MnuEditClearUsage_Click"/>
+                        <MenuItem x:Name="MnuGridClearValue" Header="Value" Click="MnuEditClearValue_Click"/>
+                    </MenuItem>
+                </ContextMenu>
+                <Style x:Key="CenterTextStyle" TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ContextMenu" Value="{StaticResource MnuGrid}"/>
+                </Style>
+            </DataGrid.RowStyle>
+           <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Classname" Width="260">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Classname of an item."/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Nominal}" Header="Nominal" ElementStyle="{StaticResource CenterTextStyle}" Width="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Nominal amount of items (according to InCargo, InHoarder, InMap, InPlayer) which the server tries to spawn.&#x0a;(must be HIGHER or EQUAL to MIN)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Min}" Header="Min" ElementStyle="{StaticResource CenterTextStyle}" Width="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="If this number is reached the server tries to restock that item until it reaches NOMINAL.&#x0a;(must be LOWER or EQUAL to NOMINAL)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Lifetime}" Header="Lifetime" ElementStyle="{StaticResource CenterTextStyle}" Width="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Lifetime of an item (in seconds) until it would be despawned by the server."/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Restock}" Header="Restock" ElementStyle="{StaticResource CenterTextStyle}" Width="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Time (in seconds) after which the server would start respawning one item.&#x0a;Respawn items immediately if value = 0 and conditions are met."/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding QMax}" Header="QMax" ElementStyle="{StaticResource CenterTextStyle}" Width="45">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Must be -1 for all normal items.&#x0a;OR&#x0a;0 to 100 (percent) for items that contains stuff.&#x0a;(i.e. waterbottle, canteen, magazine, ...)&#x0a;(must be HIGHER or EQUAL to QMIN)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding QMin}" Header="QMin" ElementStyle="{StaticResource CenterTextStyle}" Width="45">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Must be -1 for all normal items.&#x0a;OR&#x0a;0 to 100 (percent) for items that contains stuff.&#x0a;(i.e. waterbottle, canteen, magazine, ...)&#x0a;(must be LOWER or EQUAL to QMAX)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Cost}" Header="Cost" ElementStyle="{StaticResource CenterTextStyle}" Width="50">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Priority for the spawn queue scheduler.&#x0a;(higher value = higher priority, default = 100)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridCheckBoxColumn Binding="{Binding InCargo}" Header="InCargo" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Count all items in cargo.&#x0a;(i.e. containers, crates, backpacks, cars, ...)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding InHoarder}" Header="InHoarder" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Count all items in hoarder.&#x0a;(i.e. tents, barrels, underground stashes, ...)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding InMap}" Header="InMap" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Count all items on the map.&#x0a;(including buildings or objects)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding InPlayer}" Header="InPlayer" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Count all items inside players inventory."/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding Crafted}" Header="Crafted" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Used to mark craftable items."/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn Binding="{Binding Deloot}" Header="Deloot" Width="70">
+                    <DataGridCheckBoxColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Used to mark dynamic event loot.&#x0a;(i.e. heli crash site)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.HeaderStyle>
+                </DataGridCheckBoxColumn>
+                <DataGridTextColumn Binding="{Binding Category}" Header="Category" Width="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Category which the item belongs to.&#x0a;(not needed for static items or AI)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Tag}" Header="Tag" Width="60">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="(optional)&#x0a;Specifies a more precise spawn location.&#x0a;(i.e. shelves, floor)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Usage}" Header="Usage" Width="335">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="(optional)&#x0a;Specifies a spawn location area.&#x0a;(i.e. Farm, Town, Military, ...)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Value}" Header="Value" Width="335">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="ToolTipService.ToolTip" Value="(optional)&#x0a;Specifies a spawn location region.&#x0a;(i.e. Tier1, Tier2, Tier3, ...)"/>
+                            <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <Label x:Name="lblStatusCount" Content="Items: 0" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom" Height="26" VerticalContentAlignment="Center" Padding="0,5"/>
+        <ProgressBar x:Name="prgLoading" Height="16" Margin="0,4,10,0" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Right" Width="300" SmallChange="1" LargeChange="10"/>
+        
+    </Grid>
+</Window>
