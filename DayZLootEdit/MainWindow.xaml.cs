@@ -241,7 +241,7 @@ namespace DayZLootEdit
 
         }
 
-        // MAIN MENU
+        // MENU FILE
 
         private void MnuFileOpen_Click(object sender, RoutedEventArgs e)
         {
@@ -301,6 +301,8 @@ namespace DayZLootEdit
             this.Close();
 
         }
+
+        // MENU EDIT
 
         private void MnuEditSelectAll_Click(object sender, RoutedEventArgs e)
         {
@@ -668,6 +670,8 @@ namespace DayZLootEdit
             LootList.Items.Refresh();
             LootList.Focus();
         }
+
+        // MENU HELP
 
         private void MnuHelpGitHub_Click(object sender, RoutedEventArgs e)
         {
