@@ -58,32 +58,92 @@ namespace DayZLootEdit
         public bool InCargo
         {
             get { return GetFlag(xtype, "count_in_cargo"); }
-            set { xtype.Element("flags")?.Attribute("count_in_cargo")?.SetValue(value.ToString()); }
+            set 
+            { 
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("count_in_cargo")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("count_in_cargo")?.SetValue("0");
+                }
+            }
         }
         public bool InHoarder
         {
             get { return GetFlag(xtype, "count_in_hoarder"); }
-            set { xtype.Element("flags")?.Attribute("count_in_hoarder")?.SetValue(value.ToString()); }
+            set
+            {
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("count_in_hoarder")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("count_in_hoarder")?.SetValue("0");
+                }
+            }
         }
         public bool InMap
         {
             get { return GetFlag(xtype, "count_in_map"); }
-            set { xtype.Element("flags")?.Attribute("count_in_map")?.SetValue(value.ToString()); }
+            set
+            {
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("count_in_map")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("count_in_map")?.SetValue("0");
+                }
+            }
         }
         public bool InPlayer
         {
             get { return GetFlag(xtype, "count_in_player"); }
-            set { xtype.Element("flags")?.Attribute("count_in_player")?.SetValue(value.ToString()); }
+            set
+            {
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("count_in_player")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("count_in_player")?.SetValue("0");
+                }
+            }
         }
         public bool Crafted
         {
             get { return GetFlag(xtype, "crafted"); }
-            set { xtype.Element("flags")?.Attribute("crafted")?.SetValue(value.ToString()); }
+            set
+            {
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("crafted")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("crafted")?.SetValue("0");
+                }
+            }
         }
         public bool Deloot
         {
             get { return GetFlag(xtype, "deloot"); }
-            set { xtype.Element("flags")?.Attribute("deloot")?.SetValue(value.ToString()); }
+            set
+            {
+                if (value)
+                {
+                    xtype.Element("flags")?.Attribute("deloot")?.SetValue("1");
+                }
+                else
+                {
+                    xtype.Element("flags")?.Attribute("deloot")?.SetValue("0");
+                }
+            }
         }
 
         public string Category
