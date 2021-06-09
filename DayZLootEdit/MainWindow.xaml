@@ -176,6 +176,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem x:Name="MnuHelp" Header="_?" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <MenuItem x:Name="MnuHelpWiki" Header="_Wiki" Click="MnuHelpWiki_Click"/>
                 <MenuItem x:Name="MnuHelpGitHub" Header="_GitHub" Click="MnuHelpGitHub_Click"/>
                 <Separator/>
                 <MenuItem x:Name="MnuHelpInfo" Header="_Info" HorizontalAlignment="Left" Width="140" Click="MnuHelpInfo_Click"/>

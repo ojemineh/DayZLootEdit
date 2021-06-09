@@ -673,6 +673,12 @@ namespace DayZLootEdit
 
         // MENU HELP
 
+        private void MnuHelpWiki_Click(object sender, RoutedEventArgs e)
+        {
+            string uriQuery = "https://github.com/ojemineh/DayZLootEdit/wiki";
+            Process.Start(uriQuery);
+        }
+
         private void MnuHelpGitHub_Click(object sender, RoutedEventArgs e)
         {
             string uriQuery = "https://github.com/ojemineh/DayZLootEdit";
