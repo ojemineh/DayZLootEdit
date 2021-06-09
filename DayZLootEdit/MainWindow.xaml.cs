@@ -687,7 +687,7 @@ namespace DayZLootEdit
 
         }
 
-        // PERCENT
+        // PERCENT FUNCTIONS
 
         private void UpdatePercentControls()
         {
@@ -764,7 +764,7 @@ namespace DayZLootEdit
 
         }
 
-        // FILTER
+        // FILTER FUNCTIONS
 
         private void RefreshFilterListing()
         {
