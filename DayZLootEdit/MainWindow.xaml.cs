@@ -1047,7 +1047,7 @@ namespace DayZLootEdit
             UpdateFilterExec();
         }
 
-        // LOOT LIST
+        // LOOT LIST (DATA GRID)
 
         private void LootList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
