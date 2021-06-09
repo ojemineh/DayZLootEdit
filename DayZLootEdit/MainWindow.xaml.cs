@@ -241,7 +241,7 @@ namespace DayZLootEdit
 
         }
 
-        // MAIN MENU
+        // MENU FILE
 
         private void MnuFileOpen_Click(object sender, RoutedEventArgs e)
         {
@@ -301,6 +301,8 @@ namespace DayZLootEdit
             this.Close();
 
         }
+
+        // MENU EDIT
 
         private void MnuEditSelectAll_Click(object sender, RoutedEventArgs e)
         {
@@ -669,6 +671,8 @@ namespace DayZLootEdit
             LootList.Focus();
         }
 
+        // MENU HELP
+
         private void MnuHelpGitHub_Click(object sender, RoutedEventArgs e)
         {
             string uriQuery = "https://github.com/ojemineh/DayZLootEdit";
@@ -683,7 +687,7 @@ namespace DayZLootEdit
 
         }
 
-        // PERCENT
+        // PERCENT FUNCTIONS
 
         private void UpdatePercentControls()
         {
@@ -760,7 +764,7 @@ namespace DayZLootEdit
 
         }
 
-        // FILTER
+        // FILTER FUNCTIONS
 
         private void RefreshFilterListing()
         {
@@ -1043,7 +1047,7 @@ namespace DayZLootEdit
             UpdateFilterExec();
         }
 
-        // LOOT LIST
+        // LOOT LIST (DATA GRID)
 
         private void LootList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
