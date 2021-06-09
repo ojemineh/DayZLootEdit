@@ -12,6 +12,6 @@
         <Label Content="Loot Editor" Margin="0,70,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="22" FontWeight="Bold" VerticalContentAlignment="Center"/>
         <Label x:Name="lblVersion" Content="Version" Margin="0,110,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Label x:Name="lblCopyright" Content="Copyright" Margin="0,130,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <RichTextBox x:Name="rtbCredits" Height="215" Margin="10,175,10,0" VerticalAlignment="Top" Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" AllowDrop="False" IsReadOnly="True" IsUndoEnabled="False" VerticalScrollBarVisibility="Visible" AutoWordSelection="False" TextOptions.TextFormattingMode="Display" AcceptsReturn="False"/>
+        <RichTextBox x:Name="rtbCredits" Height="210" Margin="10,170,10,0" VerticalAlignment="Top" Foreground="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" AllowDrop="False" IsReadOnly="True" IsUndoEnabled="False" VerticalScrollBarVisibility="Visible" AutoWordSelection="False" TextOptions.TextFormattingMode="Display" AcceptsReturn="False"/>
     </Grid>
 </Window>
