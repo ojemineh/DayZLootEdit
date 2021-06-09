@@ -258,20 +258,20 @@
             </DockPanel>
         </GroupBox>
         
-        <DataGrid x:Name="LootList" Margin="1,0,1,1" ItemsSource="{Binding LootTable.Loot}" IsEnabled="False" SelectionChanged="LootList_SelectionChanged" Grid.Row="2" HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" MaxColumnWidth="Infinity" MinColumnWidth="20" AutoGenerateColumns="False">
+        <DataGrid x:Name="LootList" Margin="1,0,1,1" ItemsSource="{Binding LootTable.Loot}" IsEnabled="False" SelectionChanged="LootList_SelectionChanged" Grid.Row="2" HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" MaxColumnWidth="Infinity" MinColumnWidth="20" AutoGenerateColumns="False" TextOptions.TextFormattingMode="Display">
             <DataGrid.Resources>
                 <Style x:Key="CenterTextStyle" TargetType="TextBlock">
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
             </DataGrid.Resources>
            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" Header="Classname" Width="260">
+                <DataGridTextColumn Binding="{Binding Name}" Header="Classname" Width="260" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="FontWeight" Value="Bold"/>
                             <Setter Property="HorizontalContentAlignment" Value="Left"/>
                             <Setter Property="VerticalContentAlignment" Value="Center"/>
-                            <Setter Property="ToolTipService.ToolTip" Value="Classname of an item."/>
+                            <Setter Property="ToolTipService.ToolTip" Value="Item classname.&#x0a;(ReadOnly)"/>
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
