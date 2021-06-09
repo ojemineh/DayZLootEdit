@@ -143,6 +143,7 @@
                         <MenuItem x:Name="MnuEditQuantityPresets_0_0" Header="0 - 0" Click="MnuEditQuantityPresets_0_0_Click"/>
                     </MenuItem>
                 </MenuItem>
+                <Separator/>
                 <MenuItem x:Name="MnuEditCost" Header="C_ost">
                     <MenuItem x:Name="MnuEditCost100" Header="100" Click="MnuEditCostValue_Click"/>
                     <MenuItem x:Name="MnuEditCost90" Header="90" Click="MnuEditCostValue_Click"/>
@@ -155,6 +156,17 @@
                     <MenuItem x:Name="MnuEditCost20" Header="20" Click="MnuEditCostValue_Click"/>
                     <MenuItem x:Name="MnuEditCost10" Header="10" Click="MnuEditCostValue_Click"/>
                     <MenuItem x:Name="MnuEditCost0" Header="0" Click="MnuEditCostValue_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MnuEditCount" Header="Coun_t">
+                    <MenuItem x:Name="MnuEditCountInCargo" Header="InCargo" IsCheckable="True" Click="MnuEditCountInCargo_Click"/>
+                    <MenuItem x:Name="MnuEditCountInHoarder" Header="InHoarder" IsCheckable="True" Click="MnuEditCountInHoarder_Click"/>
+                    <MenuItem x:Name="MnuEditCountInMap" Header="InMap" IsCheckable="True" Click="MnuEditCountInMap_Click"/>
+                    <MenuItem x:Name="MnuEditCountInPlayer" Header="InPlayer" IsCheckable="True" Click="MnuEditCountInPlayer_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MnuEditMark" Header="_Mark As">
+                    <MenuItem x:Name="MnuEditMarkCrafted" Header="Crafted" IsCheckable="True" Click="MnuEditMarkCrafted_Click"/>
+                    <MenuItem x:Name="MnuEditMarkDeloot" Header="Deloot" IsCheckable="True" Click="MnuEditMarkDeloot_Click"/>
                 </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="MnuEditClear" Header="C_lear">
@@ -248,148 +260,10 @@
         
         <DataGrid x:Name="LootList" Margin="1,0,1,1" ItemsSource="{Binding LootTable.Loot}" IsEnabled="False" SelectionChanged="LootList_SelectionChanged" Grid.Row="2" HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" MaxColumnWidth="Infinity" MinColumnWidth="20" AutoGenerateColumns="False">
             <DataGrid.Resources>
-                <ContextMenu x:Key="MnuGrid" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <MenuItem x:Name="MnuGridName" Header="_Classname">
-                        <MenuItem x:Name="MnuGridNameSearchDuckDuck" Header="Search _DuckDuckGo" Click="MnuEditNameSearchDuckDuck_Click"/>
-                        <MenuItem x:Name="MnuGridNameSearchGoogle" Header="Search _Google" Click="MnuEditNameSearchGoogle_Click"/>
-                    </MenuItem>
-                    <MenuItem x:Name="MnuGridAmount" Header="_Spawn">
-                        <MenuItem x:Name="MnuGridAmountNominalToMin" Header="_Nominal -&gt; Min" Click="MnuEditAmountNominalToMin_Click"/>
-                        <MenuItem x:Name="MnuGridAmountMinToNominal" Header="_Min -&gt; Nominal" Click="MnuEditAmountMinToNominal_Click"/>
-                        <Separator/>
-                        <MenuItem x:Name="MnuGridAmountZero" Header="_Zero" Click="MnuEditAmountZero_Click"/>
-                    </MenuItem>
-                    <MenuItem x:Name="MnuGridLifetime" Header="_Lifetime">
-                        <MenuItem x:Name="MnuGridLifetime3888000"   Header="3888000s [45d]"     Click="MnuEditLifetimeValue_Click" Tag="3888000"/>
-                        <MenuItem x:Name="MnuGridLifetime604800"    Header="604800s [7d]"       Click="MnuEditLifetimeValue_Click" Tag="604800"/>
-                        <MenuItem x:Name="MnuGridLifetime172800"    Header="172800s [48h]"      Click="MnuEditLifetimeValue_Click" Tag="172800"/>
-                        <MenuItem x:Name="MnuGridLifetime86400"     Header="86400s [24h]"       Click="MnuEditLifetimeValue_Click" Tag="86400"/>
-                        <MenuItem x:Name="MnuGridLifetime43200"     Header="43200s [12h]"       Click="MnuEditLifetimeValue_Click" Tag="43200"/>
-                        <MenuItem x:Name="MnuGridLifetime28800"     Header="28800s [8.0h]"      Click="MnuEditLifetimeValue_Click" Tag="28800"/>
-                        <MenuItem x:Name="MnuGridLifetime21600"     Header="21600s [6.0h]"      Click="MnuEditLifetimeValue_Click" Tag="21600"/>
-                        <MenuItem x:Name="MnuGridLifetime14400"     Header="14400s [4.0h]"      Click="MnuEditLifetimeValue_Click" Tag="14400"/>
-                        <MenuItem x:Name="MnuGridLifetime10800"     Header="10800s [3.0h]"      Click="MnuEditLifetimeValue_Click" Tag="10800"/>
-                        <MenuItem x:Name="MnuGridLifetime9000"      Header="9000s [2.5h]"       Click="MnuEditLifetimeValue_Click" Tag="9000"/>
-                        <MenuItem x:Name="MnuGridLifetime7200"      Header="7200s [2.0h]"       Click="MnuEditLifetimeValue_Click" Tag="7200"/>
-                        <MenuItem x:Name="MnuGridLifetime5400"      Header="5400s [1.5h]"       Click="MnuEditLifetimeValue_Click" Tag="5400"/>
-                        <MenuItem x:Name="MnuGridLifetime3600"      Header="3600s [1.0h]"       Click="MnuEditLifetimeValue_Click" Tag="3600"/>
-                        <MenuItem x:Name="MnuGridLifetime2700"      Header="2700s [45m]"        Click="MnuEditLifetimeValue_Click" Tag="2700"/>
-                        <MenuItem x:Name="MnuGridLifetime1800"      Header="1800s [30m]"        Click="MnuEditLifetimeValue_Click" Tag="1800"/>
-                        <MenuItem x:Name="MnuGridLifetime1200"      Header="1200s [20m]"        Click="MnuEditLifetimeValue_Click" Tag="1200"/>
-                        <MenuItem x:Name="MnuGridLifetime900"       Header="900s [15m]"         Click="MnuEditLifetimeValue_Click" Tag="900"/>
-                        <MenuItem x:Name="MnuGridLifetime600"       Header="600s [10m]"         Click="MnuEditLifetimeValue_Click" Tag="600"/>
-                        <MenuItem x:Name="MnuGridLifetime300"       Header="300s [5m]"          Click="MnuEditLifetimeValue_Click" Tag="300"/>
-                        <MenuItem x:Name="MnuGridLifetime240"       Header="240s [4m]"          Click="MnuEditLifetimeValue_Click" Tag="240"/>
-                        <MenuItem x:Name="MnuGridLifetime180"       Header="180s [3m]"          Click="MnuEditLifetimeValue_Click" Tag="180"/>
-                        <MenuItem x:Name="MnuGridLifetime120"       Header="120s [2m]"          Click="MnuEditLifetimeValue_Click" Tag="120"/>
-                        <MenuItem x:Name="MnuGridLifetime60"        Header="60s [1m]"           Click="MnuEditLifetimeValue_Click" Tag="60"/>
-                        <MenuItem x:Name="MnuGridLifetime3"         Header="3s"                 Click="MnuEditLifetimeValue_Click" Tag="3"/>
-                        <MenuItem x:Name="MnuGridLifetime0"         Header="0s"                 Click="MnuEditLifetimeValue_Click" Tag="0"/>
-                    </MenuItem>
-                    <MenuItem x:Name="MnuGridRestock" Header="_Restock">
-                        <MenuItem x:Name="MnuGridRestock3888000"    Header="3888000s [45d]"     Click="MnuEditRestockValue_Click" Tag="3888000"/>
-                        <MenuItem x:Name="MnuGridRestock604800"     Header="604800s [7d]"       Click="MnuEditRestockValue_Click" Tag="604800"/>
-                        <MenuItem x:Name="MnuGridRestock172800"     Header="172800s [48h]"      Click="MnuEditRestockValue_Click" Tag="172800"/>
-                        <MenuItem x:Name="MnuGridRestock86400"      Header="86400s [24h]"       Click="MnuEditRestockValue_Click" Tag="86400"/>
-                        <MenuItem x:Name="MnuGridRestock43200"      Header="43200s [12h]"       Click="MnuEditRestockValue_Click" Tag="43200"/>
-                        <MenuItem x:Name="MnuGridRestock28800"      Header="28800s [8.0h]"      Click="MnuEditRestockValue_Click" Tag="28800"/>
-                        <MenuItem x:Name="MnuGridRestock21600"      Header="21600s [6.0h]"      Click="MnuEditRestockValue_Click" Tag="21600"/>
-                        <MenuItem x:Name="MnuGridRestock14400"      Header="14400s [4.0h]"      Click="MnuEditRestockValue_Click" Tag="14400"/>
-                        <MenuItem x:Name="MnuGridRestock10800"      Header="10800s [3.0h]"      Click="MnuEditRestockValue_Click" Tag="10800"/>
-                        <MenuItem x:Name="MnuGridRestock9000"      Header="9000s [2.5h]"       Click="MnuEditRestockValue_Click" Tag="9000"/>
-                        <MenuItem x:Name="MnuGridRestock7200"       Header="7200s [2.0h]"       Click="MnuEditRestockValue_Click" Tag="7200"/>
-                        <MenuItem x:Name="MnuGridRestock5400"       Header="5400s [1.5h]"       Click="MnuEditRestockValue_Click" Tag="5400"/>
-                        <MenuItem x:Name="MnuGridRestock3600"       Header="3600s [1.0h]"       Click="MnuEditRestockValue_Click" Tag="3600"/>
-                        <MenuItem x:Name="MnuGridRestock2700"       Header="2700s [45m]"        Click="MnuEditRestockValue_Click" Tag="2700"/>
-                        <MenuItem x:Name="MnuGridRestock1800"       Header="1800s [30m]"        Click="MnuEditRestockValue_Click" Tag="1800"/>
-                        <MenuItem x:Name="MnuGridRestock1200"       Header="1200s [20m]"        Click="MnuEditRestockValue_Click" Tag="1200"/>
-                        <MenuItem x:Name="MnuGridRestock900"        Header="900s [15m]"         Click="MnuEditRestockValue_Click" Tag="900"/>
-                        <MenuItem x:Name="MnuGridRestock600"        Header="600s [10m]"         Click="MnuEditRestockValue_Click" Tag="600"/>
-                        <MenuItem x:Name="MnuGridRestock300"        Header="300s [5m]"          Click="MnuEditRestockValue_Click" Tag="300"/>
-                        <MenuItem x:Name="MnuGridRestock240"        Header="240s [4m]"          Click="MnuEditRestockValue_Click" Tag="240"/>
-                        <MenuItem x:Name="MnuGridRestock180"        Header="180s [3m]"          Click="MnuEditRestockValue_Click" Tag="180"/>
-                        <MenuItem x:Name="MnuGridRestock120"        Header="120s [2m]"          Click="MnuEditRestockValue_Click" Tag="120"/>
-                        <MenuItem x:Name="MnuGridRestock60"         Header="60s [1m]"           Click="MnuEditRestockValue_Click" Tag="60"/>
-                        <MenuItem x:Name="MnuGridRestock3"          Header="3s"                 Click="MnuEditRestockValue_Click" Tag="3"/>
-                        <MenuItem x:Name="MnuGridRestock0"          Header="0s"                 Click="MnuEditRestockValue_Click" Tag="0"/>
-                    </MenuItem>
-                    <MenuItem x:Name="MnuGridQuantity" Header="_Quantity">
-                        <MenuItem x:Name="MnuGridQuantityNormal" Header="Default -1" Click="MnuEditQuantityNormal_Click"/>
-                        <Separator/>
-                        <MenuItem x:Name="MnuGridQuantityQMax" Header="QM_ax">
-                            <MenuItem x:Name="MnuGridQuantityQMax100" Header="100" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax90" Header="90" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax80" Header="80" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax70" Header="70" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax60" Header="60" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax50" Header="50" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax40" Header="40" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax30" Header="30" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax20" Header="20" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax10" Header="10" Click="MnuEditQuantityQMaxValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMax0" Header="0" Click="MnuEditQuantityQMaxValue_Click"/>
-                        </MenuItem>
-                        <MenuItem x:Name="MnuGridQuantityQMin" Header="QM_in">
-                            <MenuItem x:Name="MnuGridQuantityQMin100" Header="100" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin90" Header="90" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin80" Header="80" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin70" Header="70" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin60" Header="60" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin50" Header="50" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin40" Header="40" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin30" Header="30" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin20" Header="20" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin10" Header="10" Click="MnuEditQuantityQMinValue_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityQMin0" Header="0" Click="MnuEditQuantityQMinValue_Click"/>
-                        </MenuItem>
-                        <Separator/>
-                        <MenuItem x:Name="MnuGridQuantityPresets" Header="_Presets">
-                            <MenuItem x:Name="MnuGridQuantityPresets_100_30" Header="100 - 30" Click="MnuEditQuantityPresets_100_30_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_100_20" Header="100 - 20" Click="MnuEditQuantityPresets_100_20_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_100_10" Header="100 - 10" Click="MnuEditQuantityPresets_100_10_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_100_1" Header="100 - 1" Click="MnuEditQuantityPresets_100_1_Click"/>
-                            <Separator/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_90_10" Header="90 - 10" Click="MnuEditQuantityPresets_90_10_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_80_20" Header="80 - 20" Click="MnuEditQuantityPresets_80_20_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_70_30" Header="70 - 30" Click="MnuEditQuantityPresets_70_30_Click"/>
-                            <Separator/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_60_10" Header="60 - 10" Click="MnuEditQuantityPresets_60_10_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_50_10" Header="50 - 10" Click="MnuEditQuantityPresets_50_10_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_40_10" Header="40 - 10" Click="MnuEditQuantityPresets_40_10_Click"/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_30_10" Header="30 - 10" Click="MnuEditQuantityPresets_30_10_Click"/>
-                            <Separator/>
-                            <MenuItem x:Name="MnuGridQuantityPresets_0_0" Header="0 - 0" Click="MnuEditQuantityPresets_0_0_Click"/>
-                        </MenuItem>
-                    </MenuItem>
-                    <MenuItem x:Name="MnuGridCost" Header="C_ost">
-                        <MenuItem x:Name="MnuGridCost100" Header="100" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost90" Header="90" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost80" Header="80" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost70" Header="70" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost60" Header="60" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost50" Header="50" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost40" Header="40" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost30" Header="30" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost20" Header="20" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost10" Header="10" Click="MnuEditCostValue_Click"/>
-                        <MenuItem x:Name="MnuGridCost0" Header="0" Click="MnuEditCostValue_Click"/>
-                    </MenuItem>
-                    <Separator/>
-                    <MenuItem x:Name="MnuGridClear" Header="C_lear">
-                        <MenuItem x:Name="MnuGridClearTag" Header="Tag" Click="MnuEditClearTag_Click"/>
-                        <MenuItem x:Name="MnuGridClearUsage" Header="Usage" Click="MnuEditClearUsage_Click"/>
-                        <MenuItem x:Name="MnuGridClearValue" Header="Value" Click="MnuEditClearValue_Click"/>
-                    </MenuItem>
-                </ContextMenu>
                 <Style x:Key="CenterTextStyle" TargetType="TextBlock">
                     <Setter Property="HorizontalAlignment" Value="Center"/>
                 </Style>
             </DataGrid.Resources>
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="ContextMenu" Value="{StaticResource MnuGrid}"/>
-                </Style>
-            </DataGrid.RowStyle>
            <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Classname" Width="260">
                     <DataGridTextColumn.HeaderStyle>
@@ -489,6 +363,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding InHoarder}" Header="InHoarder" Width="70">
                     <DataGridCheckBoxColumn.HeaderStyle>
@@ -500,6 +379,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding InMap}" Header="InMap" Width="70">
                     <DataGridCheckBoxColumn.HeaderStyle>
@@ -511,6 +395,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding InPlayer}" Header="InPlayer" Width="70">
                     <DataGridCheckBoxColumn.HeaderStyle>
@@ -522,6 +411,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding Crafted}" Header="Crafted" Width="70">
                     <DataGridCheckBoxColumn.HeaderStyle>
@@ -533,6 +427,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridCheckBoxColumn Binding="{Binding Deloot}" Header="Deloot" Width="70">
                     <DataGridCheckBoxColumn.HeaderStyle>
@@ -544,6 +443,11 @@
                             <Setter Property="ToolTipService.ShowDuration" Value="10000"/>
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
                 </DataGridCheckBoxColumn>
                 <DataGridTextColumn Binding="{Binding Category}" Header="Category" Width="100">
                     <DataGridTextColumn.HeaderStyle>

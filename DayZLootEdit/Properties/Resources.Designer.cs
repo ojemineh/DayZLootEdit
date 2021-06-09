@@ -69,11 +69,11 @@ namespace DayZLootEdit.Properties {
         ///If you have any suggestions for improvement, please contact me on GitHub.\par
         ///\par
         ///\par
-        ///MIT License\par
-        ///\par
+        ///\ul\b\fs20 MIT LICENSE\par
+        ///\ulnone\b0\fs18\par
         ///Copyright (c) 2021 \par
         ///\par
-        ///Permission is hereby granted, free of charge, to any person obtaining a copy of this s [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///Permission is hereby granted, free of charge, to any person  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         internal static string info {
             get {

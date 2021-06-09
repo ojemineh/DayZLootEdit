@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace DayZLootEdit
 {
@@ -56,6 +57,8 @@ namespace DayZLootEdit
             MnuEditRestock.IsEnabled = false;
             MnuEditQuantity.IsEnabled = false;
             MnuEditCost.IsEnabled = false;
+            MnuEditCount.IsEnabled = false;
+            MnuEditMark.IsEnabled = false;
             MnuEditClear.IsEnabled = false;
 
             ResetPercentControls();
@@ -125,18 +128,20 @@ namespace DayZLootEdit
                 MnuEditRestock.IsEnabled = false;
                 MnuEditQuantity.IsEnabled = false;
                 MnuEditCost.IsEnabled = false;
+                MnuEditCount.IsEnabled = false;
+                MnuEditMark.IsEnabled = false;
                 MnuEditClear.IsEnabled = false;
 
                 grpFilter.IsEnabled = true;
 
-                Mouse.OverrideCursor = Cursors.Arrow;
+                Mouse.OverrideCursor = null;
                 UpdateStatus();
                 
             }
             catch (Exception err)
             {
 
-                Mouse.OverrideCursor = Cursors.Arrow;
+                Mouse.OverrideCursor = null;
 
                 string mb_caption = "Error";
                 string mb_message = "An error occurred!\n\n%1";
@@ -207,14 +212,14 @@ namespace DayZLootEdit
 
                 this.IsEnabled = true;
 
-                Mouse.OverrideCursor = Cursors.Arrow;
+                Mouse.OverrideCursor = null;
                 UpdateStatus();
 
             }
             catch (Exception err)
             {
 
-                Mouse.OverrideCursor = Cursors.Arrow;
+                Mouse.OverrideCursor = null;
 
                 string mb_caption = "Error";
                 string mb_message = "An error occurred!\n\n%1";
@@ -563,6 +568,72 @@ namespace DayZLootEdit
             foreach (LootType loot in LootList.SelectedItems)
             {
                 loot.Cost = int.Parse(item.Header.ToString());
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditCountInCargo_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditCountInCargo.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.InCargo = isChecked;
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditCountInHoarder_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditCountInHoarder.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.InHoarder = isChecked;
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditCountInMap_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditCountInMap.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.InMap = isChecked;
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditCountInPlayer_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditCountInPlayer.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.InPlayer = isChecked;
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditMarkCrafted_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditMarkCrafted.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.Crafted = isChecked;
+            }
+            LootList.Items.Refresh();
+            LootList.Focus();
+        }
+
+        private void MnuEditMarkDeloot_Click(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = MnuEditMarkDeloot.IsChecked;
+            foreach (LootType loot in LootList.SelectedItems)
+            {
+                loot.Deloot = isChecked;
             }
             LootList.Items.Refresh();
             LootList.Focus();
@@ -984,8 +1055,152 @@ namespace DayZLootEdit
             MnuEditRestock.IsEnabled = IsLootSelected;
             MnuEditQuantity.IsEnabled = IsLootSelected;
             MnuEditCost.IsEnabled = IsLootSelected;
+            MnuEditCount.IsEnabled = IsLootSelected;
+            MnuEditMark.IsEnabled = IsLootSelected;
             MnuEditClear.IsEnabled = IsLootSelected;
             grpPercent.IsEnabled = IsLootSelected;
+            if (LootList.SelectedItems.Count > 0)
+            {
+                int cargoChecked = 0;
+                int cargoUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.InCargo == true)
+                        cargoChecked++;
+                    if (loot.InCargo == false)
+                        cargoUnchecked++;
+                }
+                if (cargoChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInCargo.IsChecked = true;
+                }
+                else if (cargoUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInCargo.IsChecked = false;
+                    MnuEditCountInCargo.Icon = null;
+                }
+                else
+                {
+                    MnuEditCountInCargo.IsChecked = false;
+                    MnuEditCountInCargo.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+                int hoarderChecked = 0;
+                int hoarderUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.InHoarder == true)
+                        hoarderChecked++;
+                    if (loot.InHoarder == false)
+                        hoarderUnchecked++;
+                }
+                if (hoarderChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInHoarder.IsChecked = true;
+                }
+                else if (hoarderUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInHoarder.IsChecked = false;
+                    MnuEditCountInPlayer.Icon = null;
+                }
+                else
+                {
+                    MnuEditCountInHoarder.IsChecked = false;
+                    MnuEditCountInHoarder.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+                int mapChecked = 0;
+                int mapUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.InMap == true)
+                        mapChecked++;
+                    if (loot.InMap == false)
+                        mapUnchecked++;
+                }
+                if (mapChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInMap.IsChecked = true;
+                }
+                else if (mapUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInMap.IsChecked = false;
+                    MnuEditCountInPlayer.Icon = null;
+                }
+                else
+                {
+                    MnuEditCountInMap.IsChecked = false;
+                    MnuEditCountInMap.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+                int playerChecked = 0;
+                int playerUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.InPlayer == true)
+                        playerChecked++;
+                    if (loot.InPlayer == false)
+                        playerUnchecked++;
+                }
+                if (playerChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInPlayer.IsChecked = true;
+                }
+                else if (playerUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditCountInPlayer.IsChecked = false;
+                    MnuEditCountInPlayer.Icon = null;
+                }
+                else
+                {
+                    MnuEditCountInPlayer.IsChecked = false;
+                    MnuEditCountInPlayer.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+                int craftedChecked = 0;
+                int craftedUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.Crafted == true)
+                        craftedChecked++;
+                    if (loot.Crafted == false)
+                        craftedUnchecked++;
+                }
+                if (craftedChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditMarkCrafted.IsChecked = true;
+                }
+                else if (craftedUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditMarkCrafted.IsChecked = false;
+                    MnuEditMarkCrafted.Icon = null;
+                }
+                else
+                {
+                    MnuEditMarkCrafted.IsChecked = false;
+                    MnuEditMarkCrafted.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+                int delootChecked = 0;
+                int delootUnchecked = 0;
+                foreach (LootType loot in LootList.SelectedItems)
+                {
+                    if (loot.Deloot == true)
+                        delootChecked++;
+                    if (loot.Deloot == false)
+                        delootUnchecked++;
+                }
+                if (delootChecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditMarkDeloot.IsChecked = true;
+                }
+                else if (delootUnchecked == LootList.SelectedItems.Count)
+                {
+                    MnuEditMarkDeloot.IsChecked = false;
+                    MnuEditMarkDeloot.Icon = null;
+                }
+                else
+                {
+                    MnuEditMarkDeloot.IsChecked = false;
+                    MnuEditMarkDeloot.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/DayZLootEdit;component/checkbox_mixed.png")) };
+                }
+            }
+            LootList.Focus();
         }
 
         // STATUS
