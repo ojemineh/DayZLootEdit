@@ -159,9 +159,6 @@
     <Resource Include="dayz_types.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\checkbox_null.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="checkbox_null.png" />
   </ItemGroup>
   <ItemGroup>
