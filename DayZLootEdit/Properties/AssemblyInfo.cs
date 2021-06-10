@@ -7,11 +7,11 @@ using System.Windows;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("DayZ LootEditor")]
+[assembly: AssemblyTitle("DayZ Loot Editor")]
 [assembly: AssemblyDescription("A tool to edit the looting table of DayZ (Standalone)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DayZ LootEditor")]
+[assembly: AssemblyProduct("DayZ Loot Editor")]
 [assembly: AssemblyCopyright("Copyright © 2021 by Ojemineh")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -51,5 +51,5 @@ using System.Windows;
 // Sie können alle Werte angeben oder Standardwerte für die Build- und Revisionsnummern verwenden,
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.3.13.2")]
-[assembly: AssemblyFileVersion("0.3.13.2")]
+[assembly: AssemblyVersion("0.3.14.0")]
+[assembly: AssemblyFileVersion("0.3.14.0")]
