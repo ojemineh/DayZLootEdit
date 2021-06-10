@@ -1,6 +1,6 @@
 
 
-# DayZ LootEditor
+# DayZ Loot Editor
 
 
 An editor to comfortably modify the loot table of the game "DayZ (Standalone)".
@@ -9,10 +9,10 @@ An editor to comfortably modify the loot table of the game "DayZ (Standalone)".
 ---
 
 
-**Version 0.2.1 Alpha**
-#### **[DOWNLOAD](https://github.com/ojemineh/DayZLootEdit/releases)**
+**Version 0.3.14**  
+**[DOWNLOAD](https://github.com/ojemineh/DayZLootEdit/releases)**
 
-This tool requires at least **Windows 7** with **ServicePack 1**.
+This tool requires at least **Windows 7 SP1** & **.NET Framework 4.8**.
 
 
 
@@ -20,16 +20,12 @@ This tool requires at least **Windows 7** with **ServicePack 1**.
 
 
 The loot table of DayZ (Standalone) is stored in a XML file inside the current mission.
-The file is called `types.xml` and can be found in the `mpmissions` folder in the server files or the game files. For the current version of the game it's stored in the following location: 
-`\mpmissions\dayzOffline.chernarusplus\db\types.xml`
+The file is called `types.xml` and can be found in the `mpmissions` folder in the server files or the game files. For the current version of the game it's stored in the following location: `\mpmissions\dayzOffline.chernarusplus\db\types.xml`
 
 Usually the file from the dedicated server has to be changed.
 Changing the file in your local game folder will only affect yourself while playing in offline mode.
 
 To start, open the file `types.xml`. 
-
-Note: Alle values can be changed, even though you shouldn't do so. For example, don't change the name of any object, it will break the game.
-
 
 ![DayZ LootEdit](dayzlootedit.png)
 
