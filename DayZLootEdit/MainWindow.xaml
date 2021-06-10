@@ -65,6 +65,7 @@
                     <MenuItem x:Name="MnuEditLifetime180"       Header="180s [3m]"          Click="MnuEditLifetimeValue_Click" Tag="180"/>
                     <MenuItem x:Name="MnuEditLifetime120"       Header="120s [2m]"          Click="MnuEditLifetimeValue_Click" Tag="120"/>
                     <MenuItem x:Name="MnuEditLifetime60"        Header="60s [1m]"           Click="MnuEditLifetimeValue_Click" Tag="60"/>
+                    <MenuItem x:Name="MnuEditLifetime30"        Header="30s"                Click="MnuEditLifetimeValue_Click" Tag="30"/>
                     <MenuItem x:Name="MnuEditLifetime3"         Header="3s"                 Click="MnuEditLifetimeValue_Click" Tag="3"/>
                     <MenuItem x:Name="MnuEditLifetime0"         Header="0s"                 Click="MnuEditLifetimeValue_Click" Tag="0"/>
                 </MenuItem>
@@ -92,6 +93,7 @@
                     <MenuItem x:Name="MnuEditRestock180"        Header="180s [3m]"          Click="MnuEditRestockValue_Click" Tag="180"/>
                     <MenuItem x:Name="MnuEditRestock120"        Header="120s [2m]"          Click="MnuEditRestockValue_Click" Tag="120"/>
                     <MenuItem x:Name="MnuEditRestock60"         Header="60s [1m]"           Click="MnuEditRestockValue_Click" Tag="60"/>
+                    <MenuItem x:Name="MnuEditRestock30"         Header="30s"                Click="MnuEditRestockValue_Click" Tag="30"/>
                     <MenuItem x:Name="MnuEditRestock3"          Header="3s"                 Click="MnuEditRestockValue_Click" Tag="3"/>
                     <MenuItem x:Name="MnuEditRestock0"          Header="0s"                 Click="MnuEditRestockValue_Click" Tag="0"/>
                 </MenuItem>
