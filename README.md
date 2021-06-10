@@ -1,6 +1,6 @@
 
 
-# DayZ LootEditor
+# DayZ Loot Editor
 
 
 An editor to comfortably modify the loot table of the game "DayZ (Standalone)".
