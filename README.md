@@ -2,6 +2,23 @@
 
 # DayZ Loot Editor
 
+<p align="center">
+    <a href="https://github.com/ojemineh/DayZLootEdit/releases/latest">
+        <img src="https://img.shields.io/badge/Version-0.3.14-blue.svg?style=flat-square" alt="Loot Editor Version">
+    </a>
+    <a href="https://github.com/ojemineh/DayZLootEdit/issues">
+        <img src="https://img.shields.io/github/issues-raw/ojemineh/DayZLootEdit.svg?style=flat-square&label=Issues" alt="Loot Editor Issues">
+    </a>
+    <a href="https://github.com/ojemineh/DayZLootEdit/releases">
+        <img src="https://img.shields.io/github/downloads/ojemineh/DayZLootEdit/total.svg?style=flat-square&label=Downloads" alt="Loot Editor Downloads">
+    </a>
+    <a href="https://github.com/ojemineh/DayZLootEdit/wiki">
+        <img src="https://img.shields.io/badge/DayZLootEdit-Wiki-lightgrey.svg?style=flat-square" alt="Loot Editor Wiki">
+    </a>
+	<a href="https://github.com/ojemineh/DayZLootEdit/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/License-MIT-red.svg?style=flat-square" alt="Loot Editor License">
+    </a>
+</p>
 
 An editor to comfortably modify the loot table of the game "DayZ (Standalone)".
 
