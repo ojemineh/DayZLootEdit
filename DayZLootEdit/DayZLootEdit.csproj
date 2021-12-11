@@ -52,7 +52,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>229AEDC982ACA4F6C5DEAF6B83D2A10EEBE66534</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>07076B75F57DD8DD1C378E0361C8B675D9A345B3</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>DayZLootEdit_TemporaryKey.pfx</ManifestKeyFile>
