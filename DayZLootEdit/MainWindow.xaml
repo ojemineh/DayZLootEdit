@@ -176,6 +176,8 @@
                     <MenuItem x:Name="MnuEditClearUsage" Header="Usage" Click="MnuEditClearUsage_Click"/>
                     <MenuItem x:Name="MnuEditClearValue" Header="Value" Click="MnuEditClearValue_Click"/>
                 </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="MnuEditDelete" Header="_Delete" Click="MnuEditDelete_Click"/>
             </MenuItem>
             <MenuItem x:Name="MnuHelp" Header="_?" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <MenuItem x:Name="MnuHelpWiki" Header="_Wiki" Click="MnuHelpWiki_Click"/>

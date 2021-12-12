@@ -60,6 +60,7 @@ namespace DayZLootEdit
             MnuEditCount.IsEnabled = false;
             MnuEditMark.IsEnabled = false;
             MnuEditClear.IsEnabled = false;
+            MnuEditDelete.IsEnabled = false;
 
             ResetPercentControls();
             ResetFilterControls();
@@ -131,6 +132,7 @@ namespace DayZLootEdit
                 MnuEditCount.IsEnabled = false;
                 MnuEditMark.IsEnabled = false;
                 MnuEditClear.IsEnabled = false;
+                MnuEditDelete.IsEnabled = false;
 
                 grpFilter.IsEnabled = true;
 
@@ -671,6 +673,11 @@ namespace DayZLootEdit
             LootList.Focus();
         }
 
+        private void MnuEditDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         // MENU HELP
 
         private void MnuHelpWiki_Click(object sender, RoutedEventArgs e)
@@ -1068,6 +1075,7 @@ namespace DayZLootEdit
             MnuEditCount.IsEnabled = IsLootSelected;
             MnuEditMark.IsEnabled = IsLootSelected;
             MnuEditClear.IsEnabled = IsLootSelected;
+            MnuEditDelete.IsEnabled = IsLootSelected;
             grpPercent.IsEnabled = IsLootSelected;
             if (LootList.SelectedItems.Count > 0)
             {
