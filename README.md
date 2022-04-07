@@ -53,6 +53,7 @@ To start, open the file `types.xml`.
 
 MIT License
 
+Copyright (c) 2018 MrX13415  
 Copyright (c) 2021 by O. Jemineh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
